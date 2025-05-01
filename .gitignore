@@ -1,0 +1,7 @@
+/snap
+/flatpak
+/bin
+/build
+*.snap
+*.log
+/.vscode
