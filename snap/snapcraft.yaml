@@ -1,0 +1,45 @@
+name: iconvwadw
+version: '0.1'
+summary: Icon Browser for Adwaita
+description: icon-browser-adw allows you to view the gnome desktop icons with adwaita, allowing you to copy the icon names for use in your projects.
+base: core24
+confinement: classic #devmode
+grade: stable
+license: GPL-3.0-or-later
+compression: lzo
+
+platforms:
+  amd64:
+  arm64:
+
+apps:
+  iconvwadw:
+    command: bin/iconvwadw
+    desktop: ${SNAPCRAFT_STAGE}/share/applications/io.github.rsvzz.iconvwadw.desktop
+    #extensions: [gnome]
+    #common-id: iconvwadw
+    #slots: [iconvwadw-dbus]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - x11
+      - wayland
+
+parts:
+  iconvwadw:
+    plugin: meson
+    source: .
+    meson-parameters:
+      - --prefix=/
+      - --buildtype=release
+    build-packages:
+      - meson
+      - libgtkmm-4.0-dev
+    stage-packages:
+      - libgtkmm-4.0-0
+
+#slots:
+#  iconvwadw-dbus:
+#    interface: dbus
+#    bus: session
+#    name: iconvwadw
