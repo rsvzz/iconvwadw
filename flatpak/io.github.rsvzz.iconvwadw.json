@@ -1,0 +1,27 @@
+{
+    "id": "io.github.rsvzz.iconvwadw",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "47",
+    "sdk": "org.gnome.Sdk",
+    "command": "iconvwadw",
+    "finish-args": [
+        "--share=ipc",
+        "--device=dri",
+        "--socket=session-bus",
+        "--socket=fallback-x11",
+        "--socket=wayland"
+    ],
+    "modules": [
+      {
+        "name": "iconvwadw",
+        "buildsystem": "meson",
+        "sources": [
+          {
+            "type": "dir",
+            "path": "."
+          }
+                
+        ]
+      }
+    ]
+  }
