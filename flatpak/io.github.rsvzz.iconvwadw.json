@@ -13,12 +13,24 @@
     ],
     "modules": [
       {
+        "name": "gtkmm_4.10",
+        "buildsystem": "meson",
+        "sources": [
+          {
+            "type": "archive",
+            "url": "https://download.gnome.org/sources/gtkmm/4.10/gtkmm-4.10.0.tar.xz",
+            "sha256": "e1b109771557ecc53cba915a80b6ede827ffdbd0049c62fdf8bd7fa79afcc6eb"
+          }
+        ]
+
+      },
+      {
         "name": "iconvwadw",
         "buildsystem": "meson",
         "sources": [
           {
             "type": "dir",
-            "path": "."
+            "path": ".."
           }
                 
         ]
