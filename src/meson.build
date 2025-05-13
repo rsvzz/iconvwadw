@@ -9,7 +9,7 @@ syslocal = host_machine.system()
 # Instala el archivo solo en Linux
 if syslocal == 'linux'
    install_data('../data/io.github.rsvzz.iconvwadw.svg', install_dir: get_option('prefix') / 'share/icons/hicolor/scalable/apps')
-   #install_data('../data/io.github.rsvzz.iconvwadw.metainfo.xml', install_dir: get_option('prefix') / 'share/metainfo')
+   install_data('../data/io.github.rsvzz.iconvwadw.metainfo.xml', install_dir: get_option('prefix') / 'share/metainfo')
 
    install_data(
     '../data/io.github.rsvzz.iconvwadw.desktop',

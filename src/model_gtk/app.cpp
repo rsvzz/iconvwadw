@@ -3,6 +3,7 @@
 #include "../../inc/gtk/itemfiles.hpp"
 #include <glibmm-2.68/glibmm.h>
 #include <filesystem>
+#include <thread>
 
 App::App(){
   Gtk::HeaderBar *header = Gtk::make_managed<Gtk::HeaderBar>();
@@ -26,7 +27,7 @@ App::App(){
     app_root = exe_path.root_directory();
     path_end = Glib::build_filename(G_DIR_SEPARATOR_S, app_root,"/usr/share/icons/Adwaita/symbolic");
   }
-
-  files->dir_show(path_end.string());
+  std::thread t1(std::bind(&ItemFiles::dir_show, *files, path_end.string()));
+  t1.detach();
   this->set_child(*nav);
 };
