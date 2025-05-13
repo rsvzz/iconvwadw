@@ -22,8 +22,8 @@
     <binary>iconvwadw</binary>
   </provides>
 
-  <url type="homepage">https://github.com/rsvzz/icon-browser-adw</url>
-  <url type="bugtracker">https://github.com/rsvzz/icon-browser-adw.git</url>
+  <url type="homepage">https://github.com/rsvzz/iconvwadw</url>
+  <url type="bugtracker">https://github.com/rsvzz/iconvwadw.git</url>
 
   <releases>
    <release version="0.1.2" date="2025-04-13">
@@ -34,6 +34,7 @@
         </ul>
       </description>
     </release>
+  <releases>
  
    <screenshots>
       <screenshot type="default">

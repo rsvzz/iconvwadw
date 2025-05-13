@@ -7,7 +7,6 @@
   "finish-args": [
     "--share=ipc",
     "--device=dri",
-    "--socket=session-bus",
     "--socket=fallback-x11",
     "--socket=wayland"
   ],
@@ -30,7 +29,7 @@
         {
           "type": "archive",
           "url": "https://www.cairographics.org/releases/cairomm-1.18.0.tar.xz",
-          "sha1": "c24fa0e127303964d948a79016cfe4438e791dfa"
+          "sha256": "b81255394e3ea8e8aa887276d22afa8985fc8daef60692eb2407d23049f03cfb"
         }
       ]
     },
