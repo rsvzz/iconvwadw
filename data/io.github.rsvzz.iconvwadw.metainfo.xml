@@ -1,4 +1,4 @@
-?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <component type="desktop-application">
   <id>io.github.rsvzz.iconvwadw</id>
@@ -34,7 +34,7 @@
         </ul>
       </description>
     </release>
-  <releases>
+  </releases>
  
    <screenshots>
       <screenshot type="default">
