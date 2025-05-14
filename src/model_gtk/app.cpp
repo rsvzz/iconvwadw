@@ -26,6 +26,9 @@ App::App(){
   {
     app_root = exe_path.root_directory();
     path_end = Glib::build_filename(G_DIR_SEPARATOR_S, app_root,"/usr/share/icons/Adwaita/symbolic");
+    if(std::filesystem::is_directory(path_end.string()) == 0){
+       path_end = Glib::build_filename(G_DIR_SEPARATOR_S, app_root,"/usr/share/icons/Adwaita/scalable");
+    }
   }
   std::thread t1(std::bind(&ItemFiles::dir_show, *files, path_end.string()));
   t1.detach();
