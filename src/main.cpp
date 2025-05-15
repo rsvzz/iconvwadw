@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-  auto app = Gtk::Application::create("io.github.rsvzz.icviewadw");
+  auto app = Gtk::Application::create("io.github.rsvzz.iconvwadw");
   return app->make_window_and_run<App>(argc, argv);
 }
 
