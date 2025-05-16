@@ -1,3 +1,21 @@
-# icon-browser-adw
 
-## Visualizador de iconos gnome-icon-adwaita para Dev.
+## Icon Browser for Adwaita
+
+### icon-browser-adw allows you to view the gnome desktop icons with adwaita, allowing you to copy the icon names for use in your projects.
+[![icon-browser-adw](https://snapcraft.io/icon-browser-adw/badge.svg)](https://snapcraft.io/icon-browser-adw)
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/icon-browser-adw)
+
+# Install 
+
+    meson build --buildtype=release
+    ninja -C build
+    ninja -C build install
+
+# Requirements
+
+    adwaita-icon-theme
+    libgtkmm-4.0
+
+# Nota
+## adwaita-icon-theme is include gnome
