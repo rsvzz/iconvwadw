@@ -8,7 +8,7 @@ private:
     void on_click_gestore(int, double, double);
     std::string path;
 public:
-    ImgEvt(std::string path);
+    ImgEvt(const std::string);
     ~ImgEvt();
 };
 

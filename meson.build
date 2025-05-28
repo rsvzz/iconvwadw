@@ -1,7 +1,7 @@
 project('iconvwadw', 
-'cpp',
- version: '0.1.3', 
- default_options : ['cpp_std=c++17', 'default_library=static']
+'cpp', 'c',
+ version: '0.1.5', 
+ default_options : ['cpp_std=c++17', 'c_std=c17', 'default_library=static']
  )
  
  subdir('src')

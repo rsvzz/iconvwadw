@@ -1,6 +1,7 @@
 inc_src = include_directories('../src', '../inc')
 subdir('model_gtk')
 subdir('model')
+subdir('model_c')
 
 gtk_dep = dependency('gtkmm-4.0')
 
@@ -22,7 +23,7 @@ executable('iconvwadw',
   include_directories: [inc_src],
   dependencies: [gtk_dep],
   link_with: [
-      mgtk_dep, m_dep
+      mgtk_dep, m_dep, optc_dep
    ],
    install: true
   #link_args: ['/SUBSYSTEM:WINDOWS'] #windows,,
