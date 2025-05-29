@@ -10,7 +10,7 @@ ReadDir::ReadDir(std::string path)
             if (entry.is_directory())
             {
 
-                dir_list.push(entry.path());
+                dir_list.push(entry.path().string());
             }
         }
     }

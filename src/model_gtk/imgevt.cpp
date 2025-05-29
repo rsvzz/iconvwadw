@@ -9,8 +9,8 @@ ImgEvt::ImgEvt(const std::string path)
 {
     // Constructor implementation
     this->path = path;
-    this->set_size_request(60, 60);
-    cairo_surface_t* surface = create_surface_for_file_svg(path.c_str(), 60, 60);
+    int width = 60, height = 60;
+    cairo_surface_t* surface = create_surface_for_file_svg(path.c_str(), width, height);
     GdkTexture *texture = create_texture_from_surface(surface);
     auto cpptexture = Glib::wrap(texture, true);
 
@@ -18,9 +18,10 @@ ImgEvt::ImgEvt(const std::string path)
     gesture->signal_pressed().connect(sigc::mem_fun(*this, &ImgEvt::on_click_gestore));
     gesture->set_button(GDK_BUTTON_PRIMARY);
     this->add_controller(gesture);
+    this->set_size_request(width, height);
     this->set(cpptexture);
     this->set_margin(10);
-    this->set_size_request(60, 60);
+    
     //this->set(pixbuf);
 }
 
