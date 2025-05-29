@@ -6,8 +6,18 @@
 GdView::GdView(std::string path)
 {
     // Constructor implementation
+    
+    this->path = path;
+}
+
+GdView::~GdView()
+{
+    // Destructor implementation
+}
+
+void GdView::set_image_grid_for_data(){
     std::unique_ptr<ReadFile> readfile = std::make_unique<ReadFile>();
-    std::queue<std::string> content = readfile->getFileList(path);
+    std::queue<std::string> content = readfile->getFileList(this->path);
     int i = 0, j = 0;
     while (!content.empty())
     {
@@ -27,9 +37,3 @@ GdView::GdView(std::string path)
         }   
     }
 }
-
-GdView::~GdView()
-{
-    // Destructor implementation
-}
-
