@@ -6,7 +6,8 @@ src_files = files([
     'itemfiles.cpp',
     'gdview.cpp',
     'imgevt.cpp',
-    'winimg.cpp'
+    'winimg.cpp',
+    'svgcv.cpp'
 ])
 
 gtk_dep = dependency('gtkmm-4.0')

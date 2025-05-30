@@ -1,28 +1,24 @@
 #include "../../inc/gtk/imgevt.hpp"
 #include <gtkmm-4.0/gdkmm.h>
 #include <gtkmm-4.0/gdkmm/texture.h>
-#include "../../inc/gtk/win/winimg.hpp"
-#include "../../inc/gtk/opt-c/cairo-surface-texture.h"
-#include "../../inc/gtk/opt-c/rsvg-path.h"
+#include <gtkmm-4.0/gtkmm/gestureclick.h>
+#include <sigc++-3.0/sigc++/sigc++.h>
+#include "../../inc/gtk/win/winimg.hpp" //event click
+#include "../../inc/gtk/svgcv.hpp"
 
-ImgEvt::ImgEvt(const std::string path)
+ImgEvt::ImgEvt(const std::string path, std::shared_ptr<SvgCv> svg)
 {
     // Constructor implementation
     this->path = path;
-    int width = 60, height = 60;
-    cairo_surface_t* surface = create_surface_for_file_svg(path.c_str(), width, height);
-    GdkTexture *texture = create_texture_from_surface(surface);
-    auto cpptexture = Glib::wrap(texture, true);
+    this->set_size_request(svg->get_width(), svg->get_height());
+    this->set(svg->get_texture(path));
+    this->set_margin(10);
 
-    auto gesture = Gtk::GestureClick::create();
+    Glib::RefPtr<Gtk::GestureClick> gesture = Gtk::GestureClick::create();
     gesture->signal_pressed().connect(sigc::mem_fun(*this, &ImgEvt::on_click_gestore));
     gesture->set_button(GDK_BUTTON_PRIMARY);
     this->add_controller(gesture);
-    this->set_size_request(width, height);
-    this->set(cpptexture);
-    this->set_margin(10);
-    
-    //this->set(pixbuf);
+
 }
 
 ImgEvt::~ImgEvt()
@@ -35,4 +31,5 @@ void ImgEvt::on_click_gestore(int n_press, double x, double y)
     // Handle click event
     auto win = Gtk::make_managed<WinImg>(this->path);
     win->show();
+
 }
