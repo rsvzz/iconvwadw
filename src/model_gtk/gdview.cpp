@@ -3,6 +3,7 @@
 #include "../../inc/gtk/imgevt.hpp"
 #include "../../inc/gtk/svgcv.hpp"
 #include <filesystem>
+#include <iostream>
 
 GdView::GdView(std::string path)
 {

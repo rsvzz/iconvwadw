@@ -14,7 +14,7 @@ ImgEvt::ImgEvt(const std::string path, std::shared_ptr<SvgCv> svg)
     this->set(svg->get_texture(path));
     this->set_margin(10);
 
-    Glib::RefPtr<Gtk::GestureClick> gesture = Gtk::GestureClick::create();
+    auto gesture = Gtk::GestureClick::create();
     gesture->signal_pressed().connect(sigc::mem_fun(*this, &ImgEvt::on_click_gestore));
     gesture->set_button(GDK_BUTTON_PRIMARY);
     this->add_controller(gesture);

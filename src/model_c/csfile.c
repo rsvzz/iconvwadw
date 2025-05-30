@@ -8,7 +8,6 @@ cairo_surface_t *create_surface_for_file_svg(const char *path, int width, int he
     if (error)
     {
         g_error_free(error);
-        g_object_unref(handle);
         return NULL;
     }
 
@@ -17,6 +16,7 @@ cairo_surface_t *create_surface_for_file_svg(const char *path, int width, int he
     cairo_t *cr = cairo_create(surface);
 
     rsvg_handle_render_document(handle, cr, &viewport, &error);
+    g_object_unref(handle);
     cairo_destroy(cr);
     return surface;
 }

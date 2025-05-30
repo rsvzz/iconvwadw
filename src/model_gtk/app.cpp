@@ -2,6 +2,7 @@
 #include "../../inc/gtk/bxnav.hpp"
 #include "../../inc/gtk/itemfiles.hpp"
 #include <glibmm-2.68/glibmm.h>
+#include <iostream>
 #include <filesystem>
 #include <thread>
 
@@ -31,6 +32,6 @@ App::App(){
     }
   }
   std::thread t1(std::bind(&ItemFiles::dir_show, *files, path_end.string()));
-  t1.detach();
+  t1.join();
   this->set_child(*nav);
 };
