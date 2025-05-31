@@ -21,10 +21,11 @@ void BxBody::create_grid()
     if(scrolled_window->get_child() == nullptr)
     {
         GdView *grid = Gtk::make_managed<GdView>(this->path);
+        grid->set_halign(Gtk::Align::CENTER);
         std::thread t1(&GdView::set_image_grid_for_data, grid);
         t1.join();
-        grid->set_halign(Gtk::Align::CENTER);
         scrolled_window->set_child(*grid);
+        
     }
   
 }
