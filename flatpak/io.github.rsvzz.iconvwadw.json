@@ -1,7 +1,7 @@
 {
   "id": "io.github.rsvzz.iconvwadw",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "47",
+  "runtime-version": "48",
   "sdk": "org.gnome.Sdk",
   "command": "iconvwadw",
   "finish-args": [
@@ -34,35 +34,35 @@
       ]
     },
     {
-      "name": "glibmm_2.82",
+      "name": "glibmm_2.84",
       "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/glibmm/2.82/glibmm-2.82.0.tar.xz",
-          "sha256": "38684cff317273615c67b8fa9806f16299d51e5506d9b909bae15b589fa99cb6"
+          "url": "https://download.gnome.org/sources/glibmm/2.84/glibmm-2.84.0.tar.xz",
+          "sha256": "56ee5f51c8acfc0afdf46959316e4c8554cb50ed2b6bc5ce389d979cbb642509"
         }
       ]
     },
     {
-      "name": "pangomm_2.54",
+      "name": "pangomm_2.56-1",
       "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/pangomm/2.54/pangomm-2.54.0.tar.xz",
-          "sha256": "4a5b1fd1b7c47a1af45277ea82b5abeaca8e08fb10a27daa6394cf88d74e7acf"
+          "url": "https://download.gnome.org/sources/pangomm/2.56/pangomm-2.56.1.tar.xz",
+          "sha256": "539f5aa60e9bdc6b955bb448e2a62cc14562744df690258040fbb74bf885755d"
         }
       ]
     },
     {
-      "name": "gtkmm_4.16",
+      "name": "gtkmm_4.18",
       "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/gtkmm/4.16/gtkmm-4.16.0.tar.xz",
-          "sha256": "3b23fd3abf8fb223b00e9983b6010af2db80e38c89ab6994b8b6230aa85d60f9"
+          "url": "https://download.gnome.org/sources/gtkmm/4.18/gtkmm-4.18.0.tar.xz",
+          "sha256": "2ee31c15479fc4d8e958b03c8b5fbbc8e17bc122c2a2f544497b4e05619e33ec"
         }
       ]
     },

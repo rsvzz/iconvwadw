@@ -26,11 +26,12 @@
   <url type="bugtracker">https://github.com/rsvzz/iconvwadw.git</url>
 
   <releases>
-  <release version="0.1.2" date="2025-05-28">
+  <release version="0.1.5" date="2025-05-31">
       <description translate="no">
         <p>Changed:</p>
         <ul>
           <li>In this version I use librsvg for reading files .svg</li>
+          <li>Dialog window rearranged icons</li>
         </ul>
       </description>
     </release>
