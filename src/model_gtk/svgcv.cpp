@@ -5,15 +5,18 @@
 SvgCv::SvgCv(int width, int height){
     this->width = width;
     this->height = height;
+    this->svg = svg_draw_new();
+    svg_draw_set_draw_width_and_height(this->svg , this->width, this->height);
 }
 
 SvgCv::~SvgCv(){
-
+    //default 32 x 32
+    this->svg = svg_draw_new();
 }
 
 Glib::RefPtr<Gdk::Texture> SvgCv::get_texture(const std::string path){
-    cairo_surface_t *surface = create_surface_for_file_svg(path.c_str(), this->width, this->height);
-    GdkTexture *texture = create_texture_from_surface(surface);
+    
+    GdkTexture *texture = svg_draw_get_file_svg_to_draw(this->svg, path.c_str());
     return Glib::wrap(texture, true);
 }
 

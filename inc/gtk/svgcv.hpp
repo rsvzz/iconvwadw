@@ -1,10 +1,9 @@
 #pragma once
 #include <gtkmm-4.0/gtkmm.h>
-#include <gtkmm-4.0/gdkmm/texture.h>
+#include <gtkmm-4.0/gdkmm.h>
 
 extern "C"{
-    #include "opt-c/rsvg-path.h"
-    #include "opt-c/cairo-surface-texture.h"
+    #include "opt-c/svg_draw.h"
 }
 
 class SvgCv
@@ -12,6 +11,7 @@ class SvgCv
 private:
     /* data */
     int width, height;
+    SvgDraw *svg;
 public:
     /// @brief Get Texture
     /// @param  Width
