@@ -26,6 +26,15 @@
   <url type="bugtracker">https://github.com/rsvzz/iconvwadw.git</url>
 
   <releases>
+   <release version="0.1.7" date="2025-06-10">
+      <description translate="no">
+        <p>Changed:</p>
+        <ul>
+          <li>added dark mode</li>
+        </ul>
+      </description>
+    </release>
+
   <release version="0.1.5" date="2025-05-31">
       <description translate="no">
         <p>Changed:</p>
@@ -48,13 +57,18 @@
  
    <screenshots>
       <screenshot type="default">
-        <caption>Main window of icon-browser-adw</caption>
-        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/icon-browser-adw/832a767a94f61a1d1253b939c2d93a1847c98371/data/screenshot/screenshot_main.png</image>
+        <caption>Main window Light</caption>
+        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/iconvwadw/df06837f5e5a116e295637940eb41a627ce005c4/data/screenshot/screenshot-main-v2.png</image>
+      </screenshot>
+
+       <screenshot>
+        <caption>Main window Dark</caption>
+        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/iconvwadw/df06837f5e5a116e295637940eb41a627ce005c4/data/screenshot/screenshot-main-darkv2.png</image>
       </screenshot>
 
       <screenshot>
         <caption>Dialog Option</caption>
-        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/icon-browser-adw/832a767a94f61a1d1253b939c2d93a1847c98371/data/screenshot/screenshot_option.png</image>
+        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/iconvwadw/df06837f5e5a116e295637940eb41a627ce005c4/data/screenshot/screenshot-main-dialog-v2.png</image>
       </screenshot>
   </screenshots>
 

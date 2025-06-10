@@ -6,6 +6,9 @@
 
 [![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/icon-browser-adw)
 
+# Get it from Flathub
+[![Get it on Flathub](https://flathub.org/api/badge?svg&locale=en)](https://flathub.org/apps/io.github.rsvzz.iconvwadw)
+
 # Install 
 
     meson build --buildtype=release
