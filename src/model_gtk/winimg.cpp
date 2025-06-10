@@ -2,7 +2,7 @@
 #include "../../inc/gtk/svgcv.hpp"
 #include <filesystem>
 
-WinImg::WinImg(const std::string path)
+WinImg::WinImg(const std::string path) : DarkMode(this)
 {
     // Constructor implementation
     set_title("Icon Name");
@@ -11,6 +11,7 @@ WinImg::WinImg(const std::string path)
     set_modal(true);
 
     Gtk::Box *box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL, 5);
+    
     int width = 180, height = 180;
     auto svg = std::make_unique<SvgCv>(width, height);
     auto image = Gtk::make_managed<Gtk::Image>();
@@ -28,6 +29,7 @@ WinImg::WinImg(const std::string path)
     btn_copy->signal_clicked().connect(sigc::mem_fun(*this, &WinImg::on_copy_clicked));
 
     Gtk::Box *box_icon_name = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::HORIZONTAL, 5);
+
     box_icon_name->set_halign(Gtk::Align::CENTER);
     box_icon_name->append(*label);
     box_icon_name->append(*btn_copy);

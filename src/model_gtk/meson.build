@@ -1,6 +1,7 @@
 inc_src = include_directories('../../src', '../../inc')
 src_files = files([
     'app.cpp',
+    'darkmode.cpp',
     'bxbody.cpp',
     'bxnav.cpp',
     'itemfiles.cpp',

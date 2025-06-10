@@ -1,8 +1,9 @@
 #pragma once
 #include <gtkmm-4.0/gtkmm.h>
+#include "../../../inc/gtk/dark_mode.hpp"
 #include <iostream>
 
-class WinImg : public Gtk::Window
+class WinImg : public Gtk::Window, public DarkMode
 {
 private:
     /* data */

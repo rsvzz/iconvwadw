@@ -2,7 +2,7 @@
 #include "../../inc/gtk/bxbody.hpp"
 #include <iostream>
 
-BxNav::BxNav() : Gtk::Box(Gtk::Orientation::HORIZONTAL, 5)
+BxNav::BxNav() : Gtk::Box(Gtk::Orientation::HORIZONTAL, 0)
 {
     // Constructor implementation
     sidebar = Gtk::make_managed<Gtk::StackSidebar>();
