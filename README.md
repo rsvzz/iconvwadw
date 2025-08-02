@@ -18,7 +18,8 @@
 # Requirements
 
     adwaita-icon-theme
-    libgtkmm-4.0
+    libgtk-4.1
+    libadwaita-1 
 
 # Nota
 ## adwaita-icon-theme is include gnome
