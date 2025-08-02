@@ -1,6 +1,7 @@
 #include "../../inc/gtk/bxbody.hpp"
 #include "../../inc/gtk/gdview.hpp"
 #include <thread>
+#include <memory>
 
 BxBody::BxBody(const std::string &_path) : Gtk::Box(Gtk::Orientation::VERTICAL, 0), DarkMode(this)
 {

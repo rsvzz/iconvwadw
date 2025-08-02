@@ -1,11 +1,12 @@
 #include <iostream>
-#include <gtkmm-4.0/gtkmm.h>
-#include "../inc/gtk/app.hpp"
+#include "../inc/adwwin.hpp"
+#include <iostream>
+#include <memory>
 
 int main(int argc, char* argv[])
 {
-  auto app = Gtk::Application::create("io.github.rsvzz.iconvwadw");
-  return app->make_window_and_run<App>(argc, argv);
+  auto adw = std::make_shared<AdwWin>("io.github.rsvzz.iconvwadw", G_APPLICATION_DEFAULT_FLAGS);
+  return adw->Run(argc, argv);
 }
 
 

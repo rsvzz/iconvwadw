@@ -26,6 +26,17 @@
   <url type="bugtracker">https://github.com/rsvzz/iconvwadw.git</url>
 
   <releases>
+
+  <release version="0.1.10" date="2025-08-02">
+      <description translate="no">
+        <p>Changed:</p>
+        <ul>
+          <li>remove gtkmm-4.0</li>
+          <li>add Adwaita and gtk4</li>
+        </ul>
+      </description>
+    </release>
+
    <release version="0.1.7" date="2025-06-10">
       <description translate="no">
         <p>Changed:</p>

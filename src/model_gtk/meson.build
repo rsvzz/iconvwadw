@@ -1,17 +1,15 @@
 inc_src = include_directories('../../src', '../../inc')
 src_files = files([
-    'app.cpp',
-    'darkmode.cpp',
-    'bxbody.cpp',
-    'bxnav.cpp',
-    'itemfiles.cpp',
-    'gdview.cpp',
-    'imgevt.cpp',
-    'winimg.cpp',
-    'svgcv.cpp'
+    'navbox.cpp',
+    'boxbody.cpp',
+    'svgconvert.cpp',
+    'gdataview.cpp',
+    'imagegestore.cpp',
+    'file_item.cpp',
+    'win_image_view.cpp'
 ])
 
-gtk_dep = dependency('gtkmm-4.0')
+gtk_dep = dependency('gtk4')
 
 mgtk_dep = static_library(
     'mgtk', 

@@ -12,61 +12,6 @@
   ],
   "modules": [
     {
-      "name": "sigc_3.6",
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/libsigc++/3.6/libsigc++-3.6.0.tar.xz",
-          "sha256": "c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17"
-        }
-      ]
-    },
-    {
-      "name": "cairomm_1.18.0",
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://www.cairographics.org/releases/cairomm-1.18.0.tar.xz",
-          "sha256": "b81255394e3ea8e8aa887276d22afa8985fc8daef60692eb2407d23049f03cfb"
-        }
-      ]
-    },
-    {
-      "name": "glibmm_2.84",
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/glibmm/2.84/glibmm-2.84.0.tar.xz",
-          "sha256": "56ee5f51c8acfc0afdf46959316e4c8554cb50ed2b6bc5ce389d979cbb642509"
-        }
-      ]
-    },
-    {
-      "name": "pangomm_2.56-1",
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/pangomm/2.56/pangomm-2.56.1.tar.xz",
-          "sha256": "539f5aa60e9bdc6b955bb448e2a62cc14562744df690258040fbb74bf885755d"
-        }
-      ]
-    },
-    {
-      "name": "gtkmm_4.18",
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/gtkmm/4.18/gtkmm-4.18.0.tar.xz",
-          "sha256": "2ee31c15479fc4d8e958b03c8b5fbbc8e17bc122c2a2f544497b4e05619e33ec"
-        }
-      ]
-    },
-    {
       "name": "iconvwadw",
       "buildsystem": "meson",
       "sources": [

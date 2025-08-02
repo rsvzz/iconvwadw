@@ -6,13 +6,13 @@
 #include <filesystem>
 #include <thread>
 
-App::App(){
-  Gtk::HeaderBar *header = Gtk::make_managed<Gtk::HeaderBar>();
-  Gtk::Label *lbl_title = Gtk::make_managed<Gtk::Label>("Icon Browser Adw");
-  header->set_title_widget(*lbl_title);
-  this->set_titlebar(*header);
-  this->set_default_size(850, 720);
-
+App::App() : Gtk::Box(Gtk::Orientation::VERTICAL, 0){
+  //Gtk::HeaderBar *header = Gtk::make_managed<Gtk::HeaderBar>();
+  //Gtk::Label *lbl_title = Gtk::make_managed<Gtk::Label>("Icon Browser Adw");
+  //header->set_title_widget(*lbl_title);
+  //this->set_titlebar(*header);
+  //this->set_default_size(850, 720);
+  
   BxNav *nav = Gtk::make_managed<BxNav>();
   auto files = std::make_unique<ItemFiles>(nav);
 
@@ -33,5 +33,7 @@ App::App(){
   }
   std::thread t1(std::bind(&ItemFiles::dir_show, *files, path_end.string()));
   t1.join();
-  this->set_child(*nav);
-};
+  this->append(*nav);
+  //this->set_child(*nav);
+  
+}
