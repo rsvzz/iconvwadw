@@ -16,6 +16,7 @@ private:
 public:
     GridDataView(string path, GtkWindow*);
     ~GridDataView();
+    /// @brief read files, added GtkPicture
     void set_image_grid_for_data();
     GtkWidget* get_grid();
 };

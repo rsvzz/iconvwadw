@@ -13,7 +13,6 @@ SvgConvert::~SvgConvert(){
 }
 
 GdkTexture *SvgConvert::get_texture(const std::string path){
-    
     GdkTexture *texture = svg_draw_get_file_svg_to_draw(this->svg, path.c_str());
     return texture;
 }

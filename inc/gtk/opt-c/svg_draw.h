@@ -18,3 +18,5 @@ void svg_draw_set_draw_width_and_height(SvgDraw *self, int w, int h);
 /// @param  path
 /// @return GdkTexture texture draw
 GdkTexture *svg_draw_get_file_svg_to_draw(SvgDraw *self, const char*);
+int svg_drag_get_width(SvgDraw* self);
+int svg_drag_get_height(SvgDraw* self);

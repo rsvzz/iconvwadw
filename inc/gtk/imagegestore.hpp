@@ -16,7 +16,12 @@ private:
     static void on_click_gestore(GtkGestureClick*,int, double, double, gpointer);
     GtkWindow *parent;
 public:
-    ImageGestore(const std::string, std::shared_ptr<SvgConvert>, GtkWindow*);
+    /// @brief 
+    /// @param GtkWidget picture 
+    /// @param  Path
+    /// @param  SvgConvert
+    /// @param  GtkWindow parent for create new window
+    ImageGestore(GtkWidget *, const std::string, std::shared_ptr<SvgConvert>, GtkWindow*);
     ~ImageGestore();
 
     GtkWidget *get_image();
