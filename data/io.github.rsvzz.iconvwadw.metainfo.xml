@@ -27,6 +27,17 @@
 
   <releases>
 
+ <release version="0.1.14" date="2025-08-23">
+      <description translate="no">
+        <p>Changed:</p>
+        <ul>
+          <li>remove GtkGrid</li>
+          <li>added GtkGridView show more items</li>
+        </ul>
+      </description>
+    </release>
+
+
   <release version="0.1.10" date="2025-08-02">
       <description translate="no">
         <p>Changed:</p>
