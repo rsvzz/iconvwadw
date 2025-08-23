@@ -5,8 +5,8 @@ struct _GridItem
     /* data */
     GObject parent_instance;
     char *path;
-    GtkWidget *image, *parent;
-    SvgDraw *draw;
+    GtkWidget *parent;
+    int width, heigth;
 };
 
 G_DEFINE_TYPE (GridItem, grid_item, G_TYPE_OBJECT);
@@ -51,26 +51,20 @@ GridItem* grid_item_new(void){
     return g_object_new(GRID_ITEM_TYPE, NULL);
 }
 
-void grid_item_set_data(GridItem *self,GtkWidget* _parent, SvgDraw *_draw, const char* _path){
+void grid_item_set_data(GridItem *self,GtkWidget* _parent, const char* _path, int w, int h){
     self->path = g_strdup(_path); //free dispose
-    //strcpy(self->path, _path);
     self->parent = _parent;
-    self->draw = _draw;
-    self->image = gtk_image_new();
+    self->width = w;
+    self->heigth = h;
 }
-
-GtkWidget *grid_item_get_item(GridItem *self){return self->image;}
 
 GtkWidget *grid_item_get_parent(GridItem *self){
    return self->parent;
 }
 
-SvgDraw *grid_item_get_obj_draw(GridItem *self){
-    return self->draw;
-}
-
-char *grid_item_get_path(GridItem *self){
-    //g_print("item path -> %s \n", self->path);
+const char *grid_item_get_path(GridItem *self){
     return self->path;
 }
 
+int grid_item_get_width(GridItem *self){ return self->width;}
+int grid_item_get_heigth(GridItem *self){ return self->heigth;}

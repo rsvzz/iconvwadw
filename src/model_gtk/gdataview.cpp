@@ -23,11 +23,16 @@ static void bind_item(GtkListItemFactory *factory, GtkListItem *item, gpointer u
 {
 
     GridItem *item_g = (GridItem *)gtk_list_item_get_item(item);
+    int width = 0, heigth = 0;
+    width = grid_item_get_width(item_g);
+    heigth = grid_item_get_heigth(item_g);
+
     GtkWidget *picture = gtk_list_item_get_child(item);
-    SvgDraw *svg = grid_item_get_obj_draw(item_g);
-    gtk_widget_set_size_request(picture, svg_drag_get_width(svg), svg_drag_get_height(svg));
-    auto svg_covert = std::make_shared<SvgConvert>(svg_drag_get_width(svg), svg_drag_get_height(svg));
+    gtk_widget_set_size_request(picture, width, heigth);
+
+    auto svg_covert = std::make_shared<SvgConvert>(width, heigth);
     auto image = std::make_shared<ImageGestore>(picture, string(grid_item_get_path(item_g)), svg_covert, GTK_WINDOW(grid_item_get_parent(item_g)));
+
     //gtk_widget_set_hexpand(picture, TRUE);
     //gtk_widget_set_vexpand(picture, TRUE);
 
@@ -54,10 +59,12 @@ static void bind_item(GtkListItemFactory *factory, GtkListItem *item, gpointer u
     //  gtk_widget_set_margin_bottom(picture, 10);
 }
 
-GridDataView::GridDataView(string _path, GtkWindow *_parent)
+GridDataView::GridDataView(string _path, GtkWindow *_parent, int w, int h)
 {
     path = _path;
     parent = _parent;
+    width = w;
+    heigth = h;
     GListStore *list_store = g_list_store_new(GRID_ITEM_TYPE);
     GtkListItemFactory *factory = gtk_signal_list_item_factory_new();
 
@@ -95,23 +102,17 @@ void GridDataView::set_image_grid_for_data()
 
     std::unique_ptr<ReadFile> readfile = std::make_unique<ReadFile>();
     std::queue<std::string> content = readfile->getFileList(this->path);
-    SvgDraw *svg = svg_draw_new();
-    svg_draw_set_draw_width_and_height(svg, 60, 60);
     GtkSelectionModel *selection_model = gtk_grid_view_get_model(GTK_GRID_VIEW(grid));
     GListModel *model = gtk_no_selection_get_model(GTK_NO_SELECTION(selection_model));
     while (!content.empty())
     {
         std::string file_name = content.front();
         std::filesystem::path filePath(file_name);
-        // auto img = std::make_shared<ImageGestore>(filePath.string(), svg, parent);
         GridItem *item_obj = grid_item_new();
-        grid_item_set_data(item_obj, GTK_WIDGET(parent), svg, filePath.string().c_str());
+        grid_item_set_data(item_obj, GTK_WIDGET(parent), filePath.string().c_str(), width, heigth);
         g_list_store_append(G_LIST_STORE(model), item_obj);
         content.pop();
     }
-    // g_print("sale while \n");
-    // gtk_grid_view_set_model(GTK_GRID_VIEW(grid), selection_model);
-    // g_object_unref(svg);
 }
 
 GtkWidget *GridDataView::get_grid() { return grid; }

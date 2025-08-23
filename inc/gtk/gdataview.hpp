@@ -13,8 +13,14 @@ private:
     GtkWidget *grid;
     string path;
     GtkWindow *parent;
+    int width, heigth;
 public:
-    GridDataView(string path, GtkWindow*);
+    /// @brief create gridview
+    /// @param path 
+    /// @param GtkWindow parent
+    /// @param int width 
+    /// @param int heigth
+    GridDataView(string path, GtkWindow*, int, int);
     ~GridDataView();
     /// @brief read files, added GtkPicture
     void set_image_grid_for_data();

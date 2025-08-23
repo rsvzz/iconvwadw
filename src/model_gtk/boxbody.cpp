@@ -21,7 +21,7 @@ void BoxBody::create_grid(){
 
     if (gtk_scrolled_window_get_child(GTK_SCROLLED_WINDOW(scrollw)) == NULL)
     {
-        auto grid = std::make_shared<GridDataView>(this->path, parent);
+        auto grid = std::make_shared<GridDataView>(this->path, parent, 60, 60);
         //grid->set_image_grid_for_data();
         
         //gtk_widget_set_halign(grid->get_grid(), GTK_ALIGN_CENTER);

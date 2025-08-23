@@ -9,17 +9,22 @@ G_DECLARE_FINAL_TYPE (GridItem, grid_item, GRID, ITEM, GObject);
 
 GridItem *grid_item_new(void);
 
-/// @brief set data
-/// @param  self 
-/// @param  GtkWidget* parent
-/// @param  SvgDraw gobject
-/// @param  Path const char*
-void grid_item_set_data(GridItem*, GtkWidget*, SvgDraw*, const char*);
-/// @brief widget GtkPinture
+/// @brief Set data for item
+/// @param self 
+/// @param GtkWidget* parent for GtkWindow main
+/// @param Char* Path
+/// @param int width
+/// @param int height
+void grid_item_set_data(GridItem*, GtkWidget*, const char*, int, int);
+/// @brief GtkWidget parent
 /// @param  self
 /// @return GtkWidget
-GtkWidget *grid_item_get_item(GridItem *);
 GtkWidget *grid_item_get_parent(GridItem *);
-SvgDraw *grid_item_get_obj_draw(GridItem*);
-char *grid_item_get_path(GridItem *);
+/// @brief Path item
+/// @param  self
+/// @return Path const char*
+const char *grid_item_get_path(GridItem *);
+
+int grid_item_get_width(GridItem*);
+int grid_item_get_heigth(GridItem*);
 
