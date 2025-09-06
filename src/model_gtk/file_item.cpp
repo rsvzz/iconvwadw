@@ -12,6 +12,11 @@ FileItem::FileItem(NavBox *_nav, GtkWindow* _parent) : nav(_nav), parent(_parent
     // Constructor implementation
 }
 
+FileItem::FileItem(GtkWindow* _parent) : parent(_parent)
+{
+    // Constructor implementation
+}
+
 FileItem::~FileItem()
 {
     // Destructor implementation
@@ -31,4 +36,20 @@ void FileItem::dir_show(string path)
         nav->add(body->get_box(), dirPath.filename().string(), dirPath.filename().string());
         qdir.pop();
     }
+}
+
+void FileItem::dir_show_list_view(string path){
+    
+    std::unique_ptr<ReadDir> dir = std::make_unique<ReadDir>(path);
+    std::queue<string> qdir = dir->getDirList();
+    while (!qdir.empty())
+    {
+        string dir_name = qdir.front();
+        auto body = std::make_shared<BoxBody>(dir_name, parent);
+        std::filesystem::path dirPath(dir_name);
+        body->create_grid();
+        nav->add(body->get_box(), dirPath.filename().string(), dirPath.filename().string());
+        qdir.pop();
+    }
+
 }

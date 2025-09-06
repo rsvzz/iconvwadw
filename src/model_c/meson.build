@@ -1,7 +1,8 @@
 inc_src = include_directories('../../src', '../../inc')
 src_files = files([
     'svgdraw.c',
-    'grid_item.c'
+    'grid_item.c',
+    'list_item.c'
 ])
 
 gtk_dep = dependency('gtk4')

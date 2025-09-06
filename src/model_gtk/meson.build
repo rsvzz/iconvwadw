@@ -6,7 +6,10 @@ src_files = files([
     'gdataview.cpp',
     'imagegestore.cpp',
     'file_item.cpp',
-    'win_image_view.cpp'
+    'win_image_view.cpp',
+    'nav_split_view.cpp',
+    'tool_view.cpp',
+    'list_view_content.cpp',
 ])
 
 gtk_dep = dependency('gtk4')

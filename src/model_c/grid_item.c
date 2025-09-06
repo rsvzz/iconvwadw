@@ -22,7 +22,7 @@ static void grid_item_dispose(GObject *object)
     }
 
     G_OBJECT_CLASS(grid_item_parent_class)->dispose(object);
-    g_print("dispose grid_item \n");
+    //g_print("dispose grid_item \n");
 }
 
 static void grid_item_finalize(GObject *object)
