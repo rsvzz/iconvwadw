@@ -23,7 +23,7 @@ void activate(GtkApplication *app, gpointer user_data)
     }
     window = adw_application_window_new(app);
     auto split_view = win->get_split_view();
-    split_view = std::make_shared<NavSplitView>("", "Icon Browser Adw");
+    split_view = std::make_shared<NavSplitView>("Icon Browser Adw", "");
     gtk_window_set_default_size(GTK_WINDOW(window), 850, 720);
 
     // GtkWidget *toolbar_view = adw_toolbar_view_new();
