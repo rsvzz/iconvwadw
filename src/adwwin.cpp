@@ -1,9 +1,10 @@
 #include "../inc/adwwin.hpp"
 #include "../inc/gtk/navbox.hpp"
 #include "../inc/gtk/file_item.hpp"
-#include <iostream>
+
 #include <filesystem>
 #include <thread>
+#include <memory>
 
 extern "C"
 {
@@ -12,8 +13,9 @@ extern "C"
 /// @brief gtk4 no working in c++
 /// @param app
 /// @param user_data
-void activate(GtkApplication *app, gpointer user_data)
+void AdwWin::activate(GtkApplication *app, gpointer user_data)
 {
+    g_print("active run \n");
     auto win = static_cast<AdwWin *>(user_data);
     GtkWidget *window = win->get_window();
     if (window != nullptr)
@@ -21,25 +23,12 @@ void activate(GtkApplication *app, gpointer user_data)
         gtk_window_present(GTK_WINDOW(window));
         return;
     }
+
     window = adw_application_window_new(app);
+    
     auto split_view = win->get_split_view();
-    split_view = std::make_shared<NavSplitView>("Icon Browser Adw", "");
+    
     gtk_window_set_default_size(GTK_WINDOW(window), 850, 720);
-
-    // GtkWidget *toolbar_view = adw_toolbar_view_new();
-    // GtkWidget *header = adw_header_bar_new();
-    /*
-    adw_header_bar_set_title_widget(ADW_HEADER_BAR(header), gtk_label_new("Icon Browser Adw"));
-    GtkWidget *menu_button = gtk_menu_button_new();
-    gtk_menu_button_set_icon_name(GTK_MENU_BUTTON(menu_button), "open-menu-symbolic");
-    adw_header_bar_pack_start(ADW_HEADER_BAR(header), menu_button);
-    */
-    // adw_toolbar_view_add_top_bar(ADW_TOOLBAR_VIEW(toolbar_view), header);
-    // gtk_window_set_default_size(GTK_WINDOW(window), 850, 720);
-    // adw_application_window_set_content(ADW_APPLICATION_WINDOW(window), GTK_WIDGET(toolbar_view)); // Content window
-
-    // auto nav = std::make_shared<NavBox>();
-    // auto files = std::make_unique<FileItem>(nav.get(), GTK_WINDOW(window));
 
     std::filesystem::path exe_path = std::filesystem::read_symlink("/proc/self/exe");
     std::filesystem::path app_root, path_end;
@@ -67,22 +56,20 @@ void activate(GtkApplication *app, gpointer user_data)
     }
 
     g_free(temp_path);
-
-    // std::thread t1(std::bind(&FileItem::dir_show, *files, path_end.string()));
-    // t1.join();
-    win->set_siderbar_view(window, path_end.string());
+    
+    split_view = new NavSplitView("Icon Browser Adw", "");
+    win->set_siderbar_view(window, path_end.string(), split_view);
     split_view->set_siderbar_view(win->get_siderbar_view()->get_list_view());
 
     adw_application_window_set_content(ADW_APPLICATION_WINDOW(window), split_view->get_nav_split_view());
-    // adw_toolbar_view_set_content(ADW_TOOLBAR_VIEW(toolbar_view), nav->get_box());
     gtk_window_present(GTK_WINDOW(window));
 }
 
 AdwWin::AdwWin(const char *appId, GApplicationFlags flags)
 {
-    window = NULL;
+    window = NULL;  
     app = adw_application_new(appId, flags);
-    g_signal_connect(app, "activate", G_CALLBACK(activate), static_cast<gpointer>(this));
+    g_signal_connect(app, "activate", G_CALLBACK(&AdwWin::activate), static_cast<gpointer>(this));
 }
 
 AdwWin::~AdwWin()
@@ -101,17 +88,17 @@ GtkWidget *AdwWin::get_window()
     return window;
 }
 
-std::shared_ptr<NavSplitView> AdwWin::get_split_view()
+NavSplitView* AdwWin::get_split_view()
 {
-    return split_view;
+    return split_view.get();
 }
 
-std::shared_ptr<ListViewContent> AdwWin::get_siderbar_view()
+ListViewContent* AdwWin::get_siderbar_view()
 {
-    return siderbar_view;
+    return siderbar_view.get();
 }
 
-void AdwWin::set_siderbar_view(GtkWidget *_parent, string path)
+void AdwWin::set_siderbar_view(GtkWidget *_parent, string path, NavSplitView * nsplit)
 {
-    siderbar_view = std::make_shared<ListViewContent>(_parent, path);
+    siderbar_view = std::make_shared<ListViewContent>(_parent, path, nsplit);
 }

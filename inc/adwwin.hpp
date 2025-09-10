@@ -15,14 +15,15 @@ private:
     GtkWidget *window;
     std::shared_ptr<NavSplitView> split_view;
     std::shared_ptr<ListViewContent> siderbar_view;
+    static void activate(GtkApplication *app, gpointer user_data);
 public:
     AdwWin(const char*, GApplicationFlags);
     ~AdwWin();
 
     int Run(int, char**);
     GtkWidget* get_window();
-    std::shared_ptr<NavSplitView> get_split_view();
-    void set_siderbar_view(GtkWidget*, std::string);
-    std::shared_ptr<ListViewContent> get_siderbar_view();
+    NavSplitView* get_split_view();
+    void set_siderbar_view(GtkWidget*, std::string, NavSplitView*);
+    ListViewContent* get_siderbar_view();
 };
 

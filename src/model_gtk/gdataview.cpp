@@ -99,7 +99,6 @@ GridDataView::~GridDataView()
 
 void GridDataView::set_image_grid_for_data()
 {
-
     std::unique_ptr<ReadFile> readfile = std::make_unique<ReadFile>();
     std::queue<std::string> content = readfile->getFileList(this->path);
     GtkSelectionModel *selection_model = gtk_grid_view_get_model(GTK_GRID_VIEW(grid));

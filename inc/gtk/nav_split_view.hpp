@@ -11,6 +11,7 @@ class NavSplitView
 private:
     GtkWidget *nav_slip, *content, *sider;
     std::shared_ptr<ToolView> s_view, c_view;
+    AdwNavigationPage *sidebar_page, *content_page;
 public:
     /// @brief ctor
     /// @param  char* siderbar tittle
@@ -23,4 +24,6 @@ public:
     GtkWidget* get_nav_split_view();
     void set_siderbar_view(GtkWidget*);
     void set_content_view(GtkWidget*);
+
+    ToolView* get_content_view();
 };

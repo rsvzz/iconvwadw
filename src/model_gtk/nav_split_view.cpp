@@ -10,13 +10,13 @@ NavSplitView::NavSplitView(const char* s_title, const char* c_title)
     gtk_menu_button_set_icon_name(GTK_MENU_BUTTON(menu_button), "open-menu-symbolic");
     adw_header_bar_pack_end(ADW_HEADER_BAR(header_sider), menu_button);
 
+    sidebar_page = adw_navigation_page_new(s_view->get_view(), "");
+    content_page = adw_navigation_page_new(c_view->get_view(), "");
+
     nav_slip = adw_navigation_split_view_new();
-
-    AdwNavigationPage *sidebar_page = adw_navigation_page_new(s_view->get_view(), "");
-    AdwNavigationPage *content_page = adw_navigation_page_new(c_view->get_view(), "iconvwadw");
-
     adw_navigation_split_view_set_sidebar(ADW_NAVIGATION_SPLIT_VIEW(nav_slip), sidebar_page);
     adw_navigation_split_view_set_content(ADW_NAVIGATION_SPLIT_VIEW(nav_slip), content_page);
+     
 
 }
 
@@ -33,3 +33,5 @@ void NavSplitView::set_siderbar_view(GtkWidget* content){
 void NavSplitView::set_content_view(GtkWidget* content){
     c_view->set_view_content(content);
 }
+
+ToolView* NavSplitView::get_content_view(){ return c_view.get();}
