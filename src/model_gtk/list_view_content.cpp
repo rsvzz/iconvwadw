@@ -28,32 +28,6 @@ static gint compare_list_item(gconstpointer a, gconstpointer b, gpointer user_da
     return result;
 }
 
-void ListViewContent::on_selection_changed(GObject *object, GParamSpec *pspec, gpointer user_data)
-{
-    GtkSingleSelection *selection = GTK_SINGLE_SELECTION(object);
-    // guint selected = gtk_single_selection_get_selected(selection);
-    ListItem *item = (ListItem *)gtk_single_selection_get_selected_item(selection);
-    auto content = static_cast<ListViewContent *>(user_data);
-    if (content != nullptr)
-    {
-        auto grid = std::make_shared<GridDataView>(list_item_get_path(item), GTK_WINDOW(content->get_parent()), 60, 60);
-        grid->set_image_grid_for_data();
-        ToolView *c_view =  content->get_nav()->get_content_view();
-
-        if( c_view !=  nullptr) //g_print("c_view is not null \n");
-             c_view->set_view_content(grid->get_grid());
-        //else
-            
-        /*
-        GtkSelectionModel *model = gtk_grid_view_get_model(GTK_GRID_VIEW(gcontent));
-        GListModel *mlist = gtk_no_selection_get_model(GTK_NO_SELECTION(model));
-        g_print("count : %d \n", g_list_model_get_n_items(mlist));
-        */
-        // content->get_nav()->set_content_view(grid->get_grid());
-        // g_print("Item seleccionado: %u %s \n", selected, list_item_get_path(item));
-    }
-}
-
 static void setup_item(GtkListItemFactory *factory, GtkListItem *list_item)
 {
     GtkWidget *box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
@@ -84,7 +58,7 @@ static void bind_item(GtkListItemFactory *factory, GtkListItem *list_item)
     gtk_label_set_text(GTK_LABEL(label), list_item_get_name(my_item));
 }
 
-ListViewContent::ListViewContent(GtkWidget *_parent, string _path, NavSplitView *_nav) : parent(_parent), path(_path), nav(_nav)
+ListViewContent::ListViewContent(GtkWidget *_parent, string _path) : parent(_parent), path(_path)
 {
     file_item = std::make_shared<FileItem>(GTK_WINDOW(_parent));
     GListStore *list_store = g_list_store_new(LIST_ITEM_TYPE);
@@ -111,12 +85,9 @@ ListViewContent::ListViewContent(GtkWidget *_parent, string _path, NavSplitView 
     g_signal_connect(factory, "bind", G_CALLBACK(bind_item), NULL);
 
     GtkSingleSelection *selection = gtk_single_selection_new(G_LIST_MODEL(list_store));
-    g_signal_connect(selection, "notify::selected", G_CALLBACK(&ListViewContent::on_selection_changed), static_cast<gpointer>(this));
-
     list_view = gtk_list_view_new(GTK_SELECTION_MODEL(selection), factory);
-    
+
     gtk_single_selection_set_selected(selection, 1);
-   
 }
 
 ListViewContent::~ListViewContent()
@@ -129,9 +100,9 @@ GtkWidget *ListViewContent::get_list_view()
     return list_view;
 }
 
-NavSplitView *ListViewContent::get_nav()
-{
-    return nav;
-}
-
 GtkWidget *ListViewContent::get_parent() { return parent; }
+
+GtkSingleSelection *ListViewContent::get_single_selection()
+{
+    return GTK_SINGLE_SELECTION(gtk_list_view_get_model(GTK_LIST_VIEW(list_view)));
+}

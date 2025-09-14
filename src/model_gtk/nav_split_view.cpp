@@ -22,6 +22,7 @@ NavSplitView::NavSplitView(const char* s_title, const char* c_title)
 
 NavSplitView::~NavSplitView()
 {
+    g_print("NavSplitView ~ctor \n");
 }
 
 GtkWidget* NavSplitView::get_nav_split_view(){ return nav_slip;}
@@ -34,4 +35,4 @@ void NavSplitView::set_content_view(GtkWidget* content){
     c_view->set_view_content(content);
 }
 
-ToolView* NavSplitView::get_content_view(){ return c_view.get();}
+std::shared_ptr<ToolView> NavSplitView::get_content_view(){ return c_view;}

@@ -7,9 +7,11 @@ src_files = files([
     'imagegestore.cpp',
     'file_item.cpp',
     'win_image_view.cpp',
+    'list_view_content.cpp',
     'nav_split_view.cpp',
     'tool_view.cpp',
-    'list_view_content.cpp',
+    'nav_content.cpp'
+    
 ])
 
 gtk_dep = dependency('gtk4')

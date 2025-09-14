@@ -25,5 +25,5 @@ public:
     void set_siderbar_view(GtkWidget*);
     void set_content_view(GtkWidget*);
 
-    ToolView* get_content_view();
+    std::shared_ptr<ToolView> get_content_view();
 };

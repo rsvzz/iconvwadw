@@ -4,3 +4,4 @@
 *.snap
 *.log
 /.vscode
+/.cache
