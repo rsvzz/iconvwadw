@@ -10,6 +10,16 @@ extern "C"
 {
 #include <glib-2.0/glib.h>
 }
+
+// Función callback que se ejecuta al cerrar la ventana
+static gboolean on_window_close_request(GtkWindow *window, gpointer user_data)
+{
+  // g_print("🧹 Closed app remove popover of unparent...\n");
+
+  gtk_widget_unparent((GtkWidget *)user_data);
+  return FALSE;
+}
+
 /// @brief gtk4 no working in c++
 /// @param app
 /// @param user_data
@@ -25,7 +35,7 @@ void AdwWin::activate(GtkApplication *app, gpointer user_data)
     }
 
     window = adw_application_window_new(app);
-    
+   
     auto nav_content = win->get_nav_content();
     
     gtk_window_set_default_size(GTK_WINDOW(window), 850, 720);
@@ -59,6 +69,7 @@ void AdwWin::activate(GtkApplication *app, gpointer user_data)
     nav_content = new NavContent(window, path_end.string());
     nav_content->load_siderbar();
     adw_application_window_set_content(ADW_APPLICATION_WINDOW(window), nav_content->get_nav()->get_nav_split_view());
+    g_signal_connect(window, "close-request", G_CALLBACK(on_window_close_request), (gpointer)nav_content->get_nav()->get_popover());
     gtk_window_present(GTK_WINDOW(window));
 }
 

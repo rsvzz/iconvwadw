@@ -40,8 +40,8 @@ static void setup_item(GtkListItemFactory *factory, GtkListItem *list_item)
     GtkWidget *spacer = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_widget_set_hexpand(spacer, TRUE);
 
-    gtk_widget_set_margin_start(label, 20);
-    gtk_widget_set_margin_end(image, 5);
+    gtk_widget_set_margin_start(label, 10);
+    gtk_widget_set_margin_end(image, 10);
 
     gtk_box_append(GTK_BOX(box), label);
     gtk_box_append(GTK_BOX(box), spacer);
