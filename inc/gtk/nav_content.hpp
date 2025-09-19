@@ -8,7 +8,7 @@ class NavContent
 {
 private:
     string path;
-    GtkWidget* parent;
+    GtkWidget *parent;
     std::shared_ptr<NavSplitView> nav;
     std::shared_ptr<ListViewContent> content;
     static void on_selection_changed(GObject *object, GParamSpec *pspec, gpointer user_data);

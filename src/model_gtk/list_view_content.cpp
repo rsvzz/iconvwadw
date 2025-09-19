@@ -86,8 +86,6 @@ ListViewContent::ListViewContent(GtkWidget *_parent, string _path) : parent(_par
 
     GtkSingleSelection *selection = gtk_single_selection_new(G_LIST_MODEL(list_store));
     list_view = gtk_list_view_new(GTK_SELECTION_MODEL(selection), factory);
-
-    gtk_single_selection_set_selected(selection, 1);
 }
 
 ListViewContent::~ListViewContent()

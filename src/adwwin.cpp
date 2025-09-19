@@ -15,7 +15,7 @@ extern "C"
 /// @param user_data
 void AdwWin::activate(GtkApplication *app, gpointer user_data)
 {
-    g_print("active run \n");
+    //g_print("active run \n");
     auto win = static_cast<AdwWin *>(user_data);
     GtkWidget *window = win->get_window();
     if (window != nullptr)

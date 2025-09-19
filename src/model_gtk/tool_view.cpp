@@ -4,7 +4,7 @@ ToolView::ToolView(const char *title)
 {
 
     header = adw_header_bar_new();
-    g_print("Tool view \n");
+    //g_print("Tool view \n");
     lbl_title = gtk_label_new(title);
     view = adw_toolbar_view_new();
 
