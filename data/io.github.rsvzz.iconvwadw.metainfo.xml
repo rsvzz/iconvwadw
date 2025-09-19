@@ -91,12 +91,12 @@
    <screenshots>
       <screenshot type="default">
         <caption>Main window Light</caption>
-        <image type="source" width="800" height="600">https://github.com/rsvzz/iconvwadw/blob/5c087b69553ff4f891866d1fe5bb92f34eeab2a9/data/screenshot/screenshot_main_light_v3.png</image>
+        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/iconvwadw/81190d39c140e1b1a7ce5fce9604b1f81baa6d0e/data/screenshot/iconvwadw_light.png</image>
       </screenshot>
 
        <screenshot>
         <caption>Main window Dark</caption>
-        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/iconvwadw/5c087b69553ff4f891866d1fe5bb92f34eeab2a9/data/screenshot/screenshot_main_dark_v3.png</image>
+        <image type="source" width="800" height="600">https://raw.githubusercontent.com/rsvzz/iconvwadw/81190d39c140e1b1a7ce5fce9604b1f81baa6d0e/data/screenshot/iconvwadw_dark.png</image>
       </screenshot>
   </screenshots>
 
