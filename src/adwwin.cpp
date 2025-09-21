@@ -66,10 +66,11 @@ void AdwWin::activate(GtkApplication *app, gpointer user_data)
     }
 
     g_free(temp_path);
-    nav_content = new NavContent(window, path_end.string());
+    string path = path_end.string();
+    nav_content = new NavContent(window, path);
     nav_content->load_siderbar();
-    adw_application_window_set_content(ADW_APPLICATION_WINDOW(window), nav_content->get_nav()->get_nav_split_view());
-    g_signal_connect(window, "close-request", G_CALLBACK(on_window_close_request), (gpointer)nav_content->get_nav()->get_popover());
+    adw_application_window_set_content(ADW_APPLICATION_WINDOW(window), nav_content->get_nav_split_view());
+    g_signal_connect(window, "close-request", G_CALLBACK(on_window_close_request), (gpointer)nav_content->get_popover());
     gtk_window_present(GTK_WINDOW(window));
 }
 

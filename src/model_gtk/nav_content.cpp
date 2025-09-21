@@ -23,11 +23,10 @@ void NavContent::on_selection_changed(GObject *object, GParamSpec *pspec, gpoint
     }
 }
 
-NavContent::NavContent(GtkWidget *_win, string _path) : parent(_win), path(_path)
-{
-    nav = std::make_shared<NavSplitView>("Icon Browser Adw", "", parent);
-    content = std::make_shared<ListViewContent>(parent, path);
-    auto selection = content->get_single_selection();
+NavContent::NavContent(GtkWidget *_win, string& _path) :
+    NavSplitView("Icon Browser Adw", "", _win), ListViewContent(_win, _path), parent(_win), path(_path)
+{   
+    auto selection = get_single_selection();
     g_signal_connect(selection, "notify::selected", G_CALLBACK(&NavContent::on_selection_changed), static_cast<gpointer>(this));
     gtk_single_selection_set_selected(selection, 1);
 }
@@ -37,23 +36,15 @@ NavContent::~NavContent()
     //g_print("~NavContent \n");
 }
 
-std::shared_ptr<NavSplitView> NavContent::get_nav()
-{
-    return nav;
-}
-
-std::shared_ptr<ListViewContent> NavContent::get_list_view_content(){
-    return content;
-}
 
 GtkWindow* NavContent::get_parent(){
     return GTK_WINDOW(parent);
 }
 
 void NavContent::load_siderbar(){
-    nav->set_siderbar_view(content->get_list_view());
+    set_siderbar_view(get_list_view());
 }
 
 void NavContent::set_content(GtkWidget* widget){
-    nav->set_content_view(widget);
+    set_content_view(widget);
 }
