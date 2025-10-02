@@ -43,28 +43,18 @@ void AdwWin::activate(GtkApplication *app, gpointer user_data)
     std::filesystem::path exe_path = std::filesystem::read_symlink("/proc/self/exe");
     std::filesystem::path app_root, path_end;
     gchar *temp_path = nullptr;
-    if (g_getenv("SNAP") != NULL)
+    const gchar *snap = g_getenv("SNAP"); 
+    if (snap == NULL)
     {
         app_root = exe_path.parent_path();
-        temp_path = g_build_filename(app_root.string().c_str(), "../usr/share/icons/Adwaita/symbolic", NULL);
-        path_end = std::filesystem::path(temp_path);
+        temp_path = g_build_filename(app_root.string().c_str(), "/usr/share/icons/Adwaita/symbolic", NULL);
     }
     else
     {
-        app_root = exe_path.root_directory();
-        // g_print("parent path: %s \n", app_root.string().c_str());
-        temp_path = g_build_filename(app_root.string().c_str(), "../usr/share/icons/Adwaita/symbolic", NULL);
-        // g_print("join: %s \n", temp_path);
-        if (std::filesystem::is_directory(temp_path) == 1)
-        {
-            path_end = g_build_filename(app_root.string().c_str(), "/usr/share/icons/Adwaita/symbolic", NULL);
-        }
-        else
-        {
-            path_end = std::filesystem::path(temp_path);
-        }
+        temp_path = g_build_filename(snap,"/usr/share/icons/Adwaita/symbolic", NULL);
     }
 
+    path_end = std::filesystem::path(temp_path);
     g_free(temp_path);
     string path = path_end.string();
     nav_content = new NavContent(window, path);
