@@ -27,6 +27,15 @@
 
   <releases>
 
+     <release version="0.1.19" date="2025-12-15">
+      <description translate="no">
+        <p>Changed:</p>
+        <ul>
+          <li>path icons valid</li>
+        </ul>
+      </description>
+    </release>
+
    <release version="0.1.17" date="2025-09-19">
       <description translate="no">
         <p>Changed:</p>

@@ -32,31 +32,6 @@ static void bind_item(GtkListItemFactory *factory, GtkListItem *item, gpointer u
 
     auto svg_covert = std::make_shared<SvgConvert>(width, heigth);
     auto image = std::make_shared<ImageGestore>(picture, string(grid_item_get_path(item_g)), svg_covert, GTK_WINDOW(grid_item_get_parent(item_g)));
-
-    //gtk_widget_set_hexpand(picture, TRUE);
-    //gtk_widget_set_vexpand(picture, TRUE);
-
-    // g_print("path : %s \n", grid_item_get_path(item_g));
-    /*
-    int width = svg_drag_get_width(svg);
-    int heigth = svg_drag_get_height(svg);
-    char *path = strdup(grid_item_get_path(item_g));
-    //g_print("%s \n", path);
-    gtk_widget_set_size_request(picture, width, heigth);
-    GdkTexture *texture = svg_draw_get_file_svg_to_draw(svg, path);
-    if(texture != nullptr){
-
-    gtk_picture_set_paintable(GTK_PICTURE(picture), GDK_PAINTABLE(texture));
-    }
-    else{
-        g_print("texture es null \n");
-    }
-   */
-    // g_print("bind w= %d, h %d path: %s \n", width, heigth, path);
-    //  gtk_widget_set_margin_start(picture, 10);
-    //  gtk_widget_set_margin_top(picture, 10);
-    //  gtk_widget_set_margin_end(picture, 10);
-    //  gtk_widget_set_margin_bottom(picture, 10);
 }
 
 GridDataView::GridDataView(string _path, GtkWindow *_parent, int w, int h)
@@ -70,23 +45,7 @@ GridDataView::GridDataView(string _path, GtkWindow *_parent, int w, int h)
 
     g_signal_connect(factory, "setup", G_CALLBACK(setup_item), NULL);
     g_signal_connect(factory, "bind", G_CALLBACK(bind_item), NULL);
-    /*
-    std::unique_ptr<ReadFile> readfile = std::make_unique<ReadFile>();
-    std::queue<std::string> content = readfile->getFileList(this->path);
-    SvgDraw *svg = svg_draw_new();
-    svg_draw_set_draw_width_and_height(svg, 60, 60);
 
-    while (!content.empty())
-    {
-        std::string file_name = content.front();
-        std::filesystem::path filePath(file_name);
-        // auto img = std::make_shared<ImageGestore>(filePath.string(), svg, parent);
-        GridItem *item_obj = grid_item_new();
-        grid_item_set_data(item_obj, GTK_WIDGET(parent), svg, filePath.string().c_str());
-        g_list_store_append(list_store, item_obj);
-        content.pop();
-    }
-     */
     grid = gtk_grid_view_new(GTK_SELECTION_MODEL(gtk_no_selection_new(G_LIST_MODEL(list_store))), factory);
     gtk_widget_set_vexpand(grid, TRUE);
     gtk_widget_set_hexpand(grid, TRUE);

@@ -47,7 +47,8 @@ void AdwWin::activate(GtkApplication *app, gpointer user_data)
     if (snap == NULL)
     {
         app_root = exe_path.parent_path();
-        temp_path = g_build_filename(app_root.string().c_str(), "/usr/share/icons/Adwaita/symbolic", NULL);
+        //temp_path = g_build_filename(app_root.string().c_str(), "/usr/share/icons/Adwaita/symbolic", NULL); //other system copy images file.
+        temp_path = g_build_filename("/usr/share/icons/Adwaita/symbolic", NULL);
     }
     else
     {
@@ -92,19 +93,3 @@ GtkWidget *AdwWin::get_window()
 NavContent *AdwWin::get_nav_content(){
     return content_nav;
 }
-/*
-std::shared_ptr<NavSplitView> AdwWin::get_split_view()
-{
-    return split_view;
-}
-
-std::shared_ptr<ListViewContent> AdwWin::get_siderbar_view()
-{
-    return siderbar_view;
-}
-
-void AdwWin::set_siderbar_view(GtkWidget *_parent, string path)
-{
-   // siderbar_view = std::make_shared<ListViewContent>(_parent, path, split_view);
-}
-*/
