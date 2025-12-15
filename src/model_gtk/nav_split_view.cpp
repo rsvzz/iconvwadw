@@ -67,7 +67,7 @@ void show_about (GtkApplication *app)
   adw_show_about_dialog (GTK_WIDGET (gtk_application_get_active_window (app)),
                          "application-name", ("Icon Browser Adw"),
                          "application-icon", "io.github.rsvzz.iconvwadw",
-                         "version", "0.1.19",
+                         "version", "0.1.21",
                          "copyright", "© 2025 rsvzz",
                          "issue-url", "https://github.com/rsvzz/iconvwadw/issues",
                          "license-type", GTK_LICENSE_GPL_3_0,
